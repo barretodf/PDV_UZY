@@ -1,0 +1,14 @@
+<h1>Nova Venda</h1>
+<%= form_with model: @sale, local: true, class: "row g-3" do |form| %>
+  <div class="col-md-6">
+    <%= form.label :customer_id, "Cliente", class: "form-label" %>
+    <%= form.collection_select :customer_id, Customer.all, :id, :name, { prompt: "Selecione um cliente" }, class: "form-select" %>
+  </div>
+  <div class="col-md-6">
+    <%= form.label :total, "Total", class: "form-label" %>
+    <%= form.number_field :total, step: 0.01, class: "form-control" %>
+  </div>
+  <div class="col-12">
+    <%= form.submit "Criar Venda", class: "btn btn-primary" %>
+  </div>
+<% end %>

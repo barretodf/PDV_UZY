@@ -1,9 +1,15 @@
-import { Application } from "@hotwired/stimulus"
+// Simplificar as importações para evitar conflitos
+import "@hotwired/turbo-rails"
+import "@hotwired/stimulus"
+import "@hotwired/stimulus-loading"
 
+// Iniciar o Stimulus
+import { Application } from "@hotwired/stimulus"
 const application = Application.start()
 
-// Configure Stimulus development experience
-application.debug = false
-window.Stimulus   = application
+// Exportar para a janela se necessário
+window.Stimulus = application
 
-export { application }
+// Registrar controllers automaticamente se você estiver usando stimulus-loading
+import { registerControllers } from "@hotwired/stimulus-loading"
+registerControllers(application)
